@@ -1,0 +1,5 @@
+name: 'AWS Copilot Deploy'
+description: 'Deploy Docker Image to AWS Fargate by AWS Copilot'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
