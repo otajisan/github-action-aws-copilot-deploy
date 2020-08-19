@@ -30,3 +30,4 @@ runs:
     - ${{ inputs.app }}
     - ${{ inputs.svc }}
     - ${{ inputs.tag }}
+    - ${{ inputs.aws_account }}

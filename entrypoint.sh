@@ -6,8 +6,13 @@ AWS_SECRET_KEY=$3
 APP=$4
 SVC=$5
 TAG=$6
+AWS_ACCOUNT=$7
 
 WORKDIR /copilot-ci
+
+echo "::add-mask::${AWS_ACCOUNT}"
+echo "::add-mask::${AWS_ACCESS_KEY}"
+echo "::add-mask::${AWS_SECRET_KEY}"
 
 # AWS profile and credential settings
 mkdir -p $HOME/.aws
