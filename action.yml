@@ -16,6 +16,9 @@ inputs:
   svc:
     description: 'Your Service Name'
     required: true
+  tag:
+    description: 'Container Image Tag'
+    required: true
 
 runs:
   using: 'docker'
@@ -26,3 +29,4 @@ runs:
     - ${{ inputs.aws_secret_access_key }}
     - ${{ inputs.app }}
     - ${{ inputs.svc }}
+    - ${{ inputs.tag }}

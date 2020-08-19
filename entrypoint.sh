@@ -5,6 +5,7 @@ AWS_ACCESS_KEY=$2
 AWS_SECRET_KEY=$3
 APP=$4
 SVC=$5
+TAG=$6
 
 WORKDIR /copilot-ci
 
@@ -20,4 +21,5 @@ copilot init \
   --svc $SVC \
   --svc-type 'Load Balanced Web Service' \
   --dockerfile './Dockerfile' \
+  --tag $TAG \
   --deploy
