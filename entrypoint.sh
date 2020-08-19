@@ -27,4 +27,5 @@ copilot init \
   --svc-type 'Load Balanced Web Service' \
   --dockerfile './Dockerfile' \
   --tag $TAG \
-  --deploy
+  --deploy \
+  > /dev/null
