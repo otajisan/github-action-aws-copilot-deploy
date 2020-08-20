@@ -1,0 +1,33 @@
+name: 'AWS Copilot Deploy'
+description: 'Deploy Docker Image to AWS Fargate by AWS Copilot'
+inputs:
+  aws_region:
+    description: 'AWS Region'
+    required: true
+  aws_access_key_id:
+    description: 'AWS Access Key ID'
+    required: true
+  aws_secret_access_key:
+    description: 'AWS Secret Access Key'
+    required: true
+  app:
+    description: 'Your Application Name'
+    required: true
+  svc:
+    description: 'Your Service Name'
+    required: true
+  tag:
+    description: 'Container Image Tag'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.aws_region }}
+    - ${{ inputs.aws_access_key_id }}
+    - ${{ inputs.aws_secret_access_key }}
+    - ${{ inputs.app }}
+    - ${{ inputs.svc }}
+    - ${{ inputs.tag }}
+    - ${{ inputs.aws_account }}
