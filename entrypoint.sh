@@ -21,11 +21,21 @@ printf "[default]\naws_access_key_id=$AWS_ACCESS_KEY\naws_secret_access_key=$AWS
 
 copilot -h
 
-copilot init \
-  --app $APP \
-  --svc $SVC \
-  --svc-type 'Load Balanced Web Service' \
-  --dockerfile './Dockerfile' \
-  --tag $TAG \
-  --deploy \
-  > /dev/null
+if [ -z `copilot app ls | grep $$APP` ]; then
+  echo "application is not found. Please make application initially."
+  echo "e.g.) $ copilot init"
+  #copilot init \
+  #--app $APP \
+  #--svc $SVC \
+  #--svc-type 'Load Balanced Web Service' \
+  #--dockerfile './Dockerfile' \
+  #--tag $TAG \
+  #--deploy \
+  #> /dev/null
+  exit 1
+else
+  echo "application $APP is found. start deploy by copilot."
+  copilot deploy
+fi
+
+exit 0
