@@ -12,6 +12,7 @@ APP=$1
 SVC=$2
 TAG=$3
 
+RUN mkdir /copilot-ci
 WORKDIR /copilot-ci
 
 
@@ -26,21 +27,25 @@ WORKDIR /copilot-ci
 
 copilot -h
 
-if [ -z `copilot app ls | grep $$APP` ]; then
-  echo "application is not found. Please make application initially."
+# debug
+copilot svc ls
+copilot app ls
+
+if [ -z `copilot svc ls | grep $SVC` ]; then
+  echo "service not found. please make service initially."
   echo "e.g.) $ copilot init"
-  #copilot init \
-  #--app $APP \
-  #--svc $SVC \
-  #--svc-type 'Load Balanced Web Service' \
-  #--dockerfile './Dockerfile' \
-  #--tag $TAG \
-  #--deploy \
-  #> /dev/null
+#  copilot init \
+#  --app $APP \
+#  --svc $SVC \
+#  --svc-type 'Load Balanced Web Service' \
+#  --dockerfile './Dockerfile' \
+#  --tag $TAG \
+#  --deploy \
+#  > /dev/null
   exit 1
 else
-  echo "application $APP is found. start deploy by copilot."
-  copilot deploy
+  echo "service $SVC is found. start deploy by copilot."
+  copilot svc deploy --name $SVC --env test
 fi
 
 exit 0
