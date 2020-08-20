@@ -45,7 +45,10 @@ if [ -z `copilot svc ls | grep $SVC` ]; then
   exit 1
 else
   echo "service $SVC is found. start deploy by copilot."
-  copilot svc deploy --name $SVC --env test
+  copilot svc deploy \
+  --name $SVC \
+  --tag $TAG \
+  --env test
 fi
 
 exit 0
