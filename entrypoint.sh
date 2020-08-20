@@ -3,9 +3,6 @@
 SVC=$1
 TAG=$2
 
-RUN mkdir /copilot-ci
-WORKDIR /copilot-ci
-
 copilot -h
 
 if [ -z `copilot svc ls | grep $SVC` ]; then
